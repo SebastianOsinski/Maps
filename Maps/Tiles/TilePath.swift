@@ -9,13 +9,13 @@
 import MapKit
 
 struct TilePath: Hashable {
-    let zoom: Int
-    let x: Int
-    let y: Int
+    let zoom: UInt
+    let x: UInt
+    let y: UInt
 }
 
 extension TilePath {
     init(_ path: MKTileOverlayPath) {
-        self.init(zoom: path.z, x: path.x, y: path.y)
+        self.init(zoom: UInt(path.z), x: UInt(path.x), y: UInt(path.y))
     }
 }

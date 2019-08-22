@@ -14,9 +14,16 @@ class GoogleMapsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        mapView.delegate = self
+        
+        mapView.mapType = .none
+        let tileLayer = TileLayer()
+        tileLayer.map = mapView
     }
+}
 
-
+extension GoogleMapsViewController: GMSMapViewDelegate {
+    
 }
 

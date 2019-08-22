@@ -10,6 +10,8 @@ import Foundation
 import class UIKit.UIImage
 
 final class TileManager {
+    static let shared = TileManager()
+    
     private let urlSession = URLSession.shared
     private let cache = TileCache()
     private let baseUrl = URL(string: "https://tile.openstreetmap.org")!

@@ -23,12 +23,12 @@ class MapKitViewController: UIViewController {
         mapView.showsUserLocation = true
         mapView.delegate = self
         
-        
         let tileOverlay = TileOverlay()
         tileOverlay.canReplaceMapContent = true
 
         mapView.addOverlay(tileOverlay)
     }
+    
     @IBAction func myLocationButtonTapped(_ sender: Any) {
         requestLocationIfPossible()
     }

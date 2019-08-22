@@ -9,13 +9,13 @@
 import MapKit
 
 class TileOverlay: MKTileOverlay {
-    static let tileManager = TileManager()
+    static let tileManager = TileManager.shared
     
     init() {
         super.init(urlTemplate: nil)
         
-        maximumZ = 19
         minimumZ = 1
+        maximumZ = 19
     }
     
     override func loadTile(at path: MKTileOverlayPath, result: @escaping (Data?, Error?) -> Void) {

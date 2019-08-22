@@ -21,6 +21,7 @@
 		91366374230F12F2002672B9 /* TileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91366373230F12F2002672B9 /* TileCache.swift */; };
 		91366376230F12FA002672B9 /* TilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91366375230F12FA002672B9 /* TilePath.swift */; };
 		91366379230F19E8002672B9 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91366378230F19E8002672B9 /* Result.swift */; };
+		9136637D230F3411002672B9 /* TileLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9136637C230F3411002672B9 /* TileLayer.swift */; };
 		F7830AD53B0725A5748905F6 /* Pods_Maps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7388BE95BEB6FEDE870D9F8E /* Pods_Maps.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		91366373230F12F2002672B9 /* TileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileCache.swift; sourceTree = "<group>"; };
 		91366375230F12FA002672B9 /* TilePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilePath.swift; sourceTree = "<group>"; };
 		91366378230F19E8002672B9 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		9136637C230F3411002672B9 /* TileLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileLayer.swift; sourceTree = "<group>"; };
 		B3F2501FA558F23E1A09D0A0 /* Pods-MapsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapsTests.debug.xcconfig"; path = "Target Support Files/Pods-MapsTests/Pods-MapsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C0ED8F6210916C0D1979B259 /* Pods_MapsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD6353550567B1AEB50E7D40 /* Pods-Maps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Maps.debug.xcconfig"; path = "Target Support Files/Pods-Maps/Pods-Maps.debug.xcconfig"; sourceTree = "<group>"; };
@@ -112,11 +114,11 @@
 		91366348230EFCB6002672B9 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
+				9136637B230F33B6002672B9 /* GoogleMaps */,
+				9136637A230F33AE002672B9 /* MapKit */,
 				91366377230F19D9002672B9 /* Extensions */,
 				9136636E230F1066002672B9 /* Tiles */,
 				9136636D230F0E79002672B9 /* Main */,
-				9136634D230EFCB6002672B9 /* MapKitViewController.swift */,
-				9136634F230EFCB6002672B9 /* GoogleMapsViewController.swift */,
 				91366351230EFCB6002672B9 /* Main.storyboard */,
 				91366354230EFCB9002672B9 /* Assets.xcassets */,
 				91366356230EFCB9002672B9 /* LaunchScreen.storyboard */,
@@ -147,7 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				9136636F230F107B002672B9 /* TileManager.swift */,
-				91366371230F1226002672B9 /* TileOverlay.swift */,
 				91366373230F12F2002672B9 /* TileCache.swift */,
 				91366375230F12FA002672B9 /* TilePath.swift */,
 			);
@@ -160,6 +161,24 @@
 				91366378230F19E8002672B9 /* Result.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9136637A230F33AE002672B9 /* MapKit */ = {
+			isa = PBXGroup;
+			children = (
+				91366371230F1226002672B9 /* TileOverlay.swift */,
+				9136634D230EFCB6002672B9 /* MapKitViewController.swift */,
+			);
+			path = MapKit;
+			sourceTree = "<group>";
+		};
+		9136637B230F33B6002672B9 /* GoogleMaps */ = {
+			isa = PBXGroup;
+			children = (
+				9136634F230EFCB6002672B9 /* GoogleMapsViewController.swift */,
+				9136637C230F3411002672B9 /* TileLayer.swift */,
+			);
+			path = GoogleMaps;
 			sourceTree = "<group>";
 		};
 		E4107B6381D1DDB2F9BBC3EA /* Pods */ = {
@@ -368,6 +387,7 @@
 				91366374230F12F2002672B9 /* TileCache.swift in Sources */,
 				91366372230F1226002672B9 /* TileOverlay.swift in Sources */,
 				9136634C230EFCB6002672B9 /* SceneDelegate.swift in Sources */,
+				9136637D230F3411002672B9 /* TileLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
