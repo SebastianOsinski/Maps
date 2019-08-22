@@ -29,11 +29,18 @@
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <navigationItem key="navigationItem" title="MapKit" id="QHY-xX-IFH">
-                        <barButtonItem key="rightBarButtonItem" title="My Location" image="mappin.and.ellipse" catalog="system" id="q9h-mG-5lQ">
-                            <connections>
-                                <action selector="myLocationButtonTapped:" destination="9pv-A4-QxB" id="WKN-as-HBg"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="My Location" image="mappin.and.ellipse" catalog="system" id="q9h-mG-5lQ">
+                                <connections>
+                                    <action selector="myLocationButtonTapped:" destination="9pv-A4-QxB" id="WKN-as-HBg"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Switch mode" image="map" catalog="system" id="9hV-e9-hPR">
+                                <connections>
+                                    <action selector="switchMapMode:" destination="9pv-A4-QxB" id="DW6-6n-fag"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="w9x-HS-c5G" id="KNj-rs-7yY"/>

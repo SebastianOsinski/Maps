@@ -14,6 +14,8 @@ class MapKitViewController: UIViewController {
     
     private let locationManager = CLLocationManager()
     
+    private var tileOverlay: TileOverlay?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,21 +24,41 @@ class MapKitViewController: UIViewController {
         
         mapView.showsUserLocation = true
         mapView.delegate = self
-        
-        let tileOverlay = TileOverlay()
-        tileOverlay.canReplaceMapContent = true
-
-        mapView.addOverlay(tileOverlay)
     }
     
     @IBAction func myLocationButtonTapped(_ sender: Any) {
-        requestLocationIfPossible()
+        guard let location = mapView.userLocation.location else {
+            return requestLocationIfPossible()
+        }
+        
+        setLocationOnMap(location)
     }
+    
+    @IBAction func switchMapMode(_ button: UIBarButtonItem) {
+        if let tileOverlay = tileOverlay {
+            mapView.removeOverlay(tileOverlay)
+            self.tileOverlay = nil
+            button.image = UIImage(systemName: "map")
+        } else {
+            tileOverlay = TileOverlay()
+            tileOverlay!.canReplaceMapContent = true
+            mapView.addOverlay(tileOverlay!)
+            button.image = UIImage(systemName: "map.fill")
+        }
+    }
+    
     
     private func requestLocationIfPossible() {
         guard [CLAuthorizationStatus.authorizedAlways, .authorizedWhenInUse].contains(CLLocationManager.authorizationStatus()) else { return }
         
         locationManager.requestLocation()
+    }
+    
+    private func setLocationOnMap(_ location: CLLocation) {
+        mapView.setRegion(MKCoordinateRegion(
+            center: location.coordinate,
+            span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        ), animated: true)
     }
 }
 
@@ -53,10 +75,7 @@ extension MapKitViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last!
         
-        mapView.setRegion(MKCoordinateRegion(
-            center: location.coordinate,
-            span: MKCoordinateSpan(latitudeDelta: 0, longitudeDelta: 0)
-        ), animated: true)
+        setLocationOnMap(location)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {}

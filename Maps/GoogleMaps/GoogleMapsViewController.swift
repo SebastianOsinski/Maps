@@ -16,6 +16,7 @@ class GoogleMapsViewController: UIViewController {
         super.viewDidLoad()
         
         mapView.delegate = self
+        mapView.isMyLocationEnabled = true
         
         mapView.mapType = .none
         let tileLayer = TileLayer()

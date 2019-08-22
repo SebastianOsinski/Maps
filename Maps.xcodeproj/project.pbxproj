@@ -166,8 +166,8 @@
 		9136637A230F33AE002672B9 /* MapKit */ = {
 			isa = PBXGroup;
 			children = (
-				91366371230F1226002672B9 /* TileOverlay.swift */,
 				9136634D230EFCB6002672B9 /* MapKitViewController.swift */,
+				91366371230F1226002672B9 /* TileOverlay.swift */,
 			);
 			path = MapKit;
 			sourceTree = "<group>";

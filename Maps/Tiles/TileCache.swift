@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class TilePathCacheKey: NSObject {
+private final class TilePathCacheKey: NSObject {
     private let path: TilePath
     
     init(_ path: TilePath) {
