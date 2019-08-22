@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  MapKitViewController.swift
 //  Maps
 //
 //  Created by Sebastian Osiński on 22/08/2019.
@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import MapKit
 
-class SecondViewController: UIViewController {
-
+class MapKitViewController: UIViewController {
+    @IBOutlet weak var mapView: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  GoogleMapsViewController.swift
 //  Maps
 //
 //  Created by Sebastian Osiński on 22/08/2019.
@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import GoogleMaps
 
-class FirstViewController: UIViewController {
-
+class GoogleMapsViewController: UIViewController {
+    @IBOutlet weak var mapView: GMSMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
