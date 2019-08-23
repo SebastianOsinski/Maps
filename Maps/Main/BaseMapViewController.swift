@@ -24,6 +24,7 @@ class BaseMapViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     
+    private let poiProvider = POIProvider()
     private let switchMapModeButtonItem = UIBarButtonItem()
     
     override func viewDidLoad() {
@@ -60,7 +61,17 @@ class BaseMapViewController: UIViewController {
         locationManager.requestLocation()
     }
     
+    func loadPOIs() {
+        poiProvider.loadPOIs { [weak self] pois in
+            if let pois = pois {
+                self?.showPOIs(pois)
+            }
+        }
+    }
+    
     func setLocationOnMap(_ location: CLLocation) {}
+    
+    func showPOIs(_ pois: [POI]) {}
     
     @objc func currentLocationButtonTapped() {}
     

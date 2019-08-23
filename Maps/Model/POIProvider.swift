@@ -10,10 +10,6 @@ import Foundation
 
 final class POIProvider {
     func loadPOIs(_ completion: @escaping ([POI]?) -> ()) {
-        let url = Bundle.main.url(forResource: "POIs", withExtension: "json")!
-        let data = try! Data(contentsOf: url)
-        let pois = try! JSONDecoder().decode([POI].self, from: data)
-        
         DispatchQueue.global(qos: .userInitiated).async {
             guard
                 let url = Bundle.main.url(forResource: "POIs", withExtension: "json"),

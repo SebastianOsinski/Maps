@@ -13,7 +13,6 @@ class MapKitViewController: BaseMapViewController {
     private let poiReuseIdentifier = "poi"
     
     private let mapView = MKMapView()
-    private let poiProvider = POIProvider()
     
     private var tileOverlay: TileOverlay?
     
@@ -28,11 +27,7 @@ class MapKitViewController: BaseMapViewController {
         mapView.delegate = self
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: poiReuseIdentifier)
         
-        poiProvider.loadPOIs { [weak self] pois in
-            if let pois = pois {
-                self?.showPOIs(pois)
-            }
-        }
+        loadPOIs()
     }
     
     override func currentLocationButtonTapped() {
@@ -63,7 +58,7 @@ class MapKitViewController: BaseMapViewController {
         ), animated: true)
     }
     
-    private func showPOIs(_ pois: [POI]) {
+    override func showPOIs(_ pois: [POI]) {
         mapView.showAnnotations(pois.map(POIAnnotation.init), animated: true)
     }
 }

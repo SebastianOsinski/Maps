@@ -22,6 +22,8 @@ class GoogleMapsViewController: BaseMapViewController {
         
         mapView.delegate = self
         mapView.isMyLocationEnabled = true
+        
+        loadPOIs()
     }
     
     override func currentLocationButtonTapped() {
@@ -49,6 +51,18 @@ class GoogleMapsViewController: BaseMapViewController {
     override func setLocationOnMap(_ location: CLLocation) {
         mapView.animate(toLocation: location.coordinate)
         mapView.animate(toZoom: 16)
+    }
+    
+    override func showPOIs(_ pois: [POI]) {
+        pois.forEach { poi in
+            let position = CLLocationCoordinate2D(latitude: poi.lat, longitude: poi.long)
+            let marker = GMSMarker(position: position)
+            
+            marker.title = poi.name
+            marker.
+            
+            marker.map = mapView
+        }
     }
 }
 
