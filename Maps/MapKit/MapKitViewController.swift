@@ -9,18 +9,17 @@
 import UIKit
 import MapKit
 
-class MapKitViewController: BaseMapViewController<MKMapView> {
-    private let locationManager = CLLocationManager()
+class MapKitViewController: BaseMapViewController {
+    private let mapView = MKMapView()
     
     private var tileOverlay: TileOverlay?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setMapModeButton(mode: .original)
+        setupMapView(mapView)
         
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
+        setMapModeButton(mode: .original)
         
         mapView.showsUserLocation = true
         mapView.delegate = self
@@ -47,13 +46,7 @@ class MapKitViewController: BaseMapViewController<MKMapView> {
         }
     }
     
-    private func requestLocationIfPossible() {
-        guard [CLAuthorizationStatus.authorizedAlways, .authorizedWhenInUse].contains(CLLocationManager.authorizationStatus()) else { return }
-        
-        locationManager.requestLocation()
-    }
-    
-    private func setLocationOnMap(_ location: CLLocation) {
+    override func setLocationOnMap(_ location: CLLocation) {
         mapView.setRegion(MKCoordinateRegion(
             center: location.coordinate,
             span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
@@ -67,19 +60,5 @@ extension MapKitViewController: MKMapViewDelegate {
         case is TileOverlay: return MKTileOverlayRenderer(overlay: overlay)
         default: fatalError()
         }
-    }
-}
-
-extension MapKitViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.last!
-        
-        setLocationOnMap(location)
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {}
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        requestLocationIfPossible()
     }
 }

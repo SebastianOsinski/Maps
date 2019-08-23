@@ -9,19 +9,46 @@
 import UIKit
 import GoogleMaps
 
-class GoogleMapsViewController: BaseMapViewController<GMSMapView> {
+class GoogleMapsViewController: BaseMapViewController {
+    private let mapView = GMSMapView()
+    private let tileLayer = TileLayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setMapModeButton(mode: .custom)
+        setupMapView(mapView)
+        
+        setMapModeButton(mode: .original)
         
         mapView.delegate = self
         mapView.isMyLocationEnabled = true
+    }
+    
+    override func currentLocationButtonTapped() {
+        guard let location = mapView.myLocation else {
+            return requestLocationIfPossible()
+        }
         
-        mapView.mapType = .none
-        let tileLayer = TileLayer()
-        tileLayer.map = mapView
+        setLocationOnMap(location)
+    }
+    
+    override func switchMapModeButtonTapped() {
+        if mapView.mapType == .none {
+            mapView.mapType = .normal
+            tileLayer.map = nil
+            
+            setMapModeButton(mode: .original)
+        } else {
+            mapView.mapType = .none
+            tileLayer.map = mapView
+            
+            setMapModeButton(mode: .custom)
+        }
+    }
+    
+    override func setLocationOnMap(_ location: CLLocation) {
+        mapView.animate(toLocation: location.coordinate)
+        mapView.animate(toZoom: 16)
     }
 }
 
