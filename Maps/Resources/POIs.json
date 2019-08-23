@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Copernicus Airport",
+        "emoji": "✈️",
+        "lat": 51.104331,
+        "long": 16.880991
+    },
+    {
+        "name": "Horse Racing Track Partynice",
+        "emoji": "🏇",
+        "lat": 51.055587,
+        "long": 17.000248
+    },
+    {
+        "name": "Hydropolis",
+        "emoji": "💧",
+        "lat": 51.103834,
+        "long": 17.057415
+    },
+    {
+        "name": "ZOO",
+        "emoji": "🦁",
+        "lat": 51.104155,
+        "long": 17.074213
+    },
+    {
+        "name": "Africarium",
+        "emoji": "🦈",
+        "lat": 51.104424,
+        "long": 17.075211
+    },
+    {
+        "name": "Odrarium",
+        "emoji": "🐟",
+        "lat": 51.104087,
+        "long": 17.072615
+    }
+]

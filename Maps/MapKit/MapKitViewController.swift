@@ -10,7 +10,10 @@ import UIKit
 import MapKit
 
 class MapKitViewController: BaseMapViewController {
+    private let poiReuseIdentifier = "poi"
+    
     private let mapView = MKMapView()
+    private let poiProvider = POIProvider()
     
     private var tileOverlay: TileOverlay?
     
@@ -23,6 +26,13 @@ class MapKitViewController: BaseMapViewController {
         
         mapView.showsUserLocation = true
         mapView.delegate = self
+        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: poiReuseIdentifier)
+        
+        poiProvider.loadPOIs { [weak self] pois in
+            if let pois = pois {
+                self?.showPOIs(pois)
+            }
+        }
     }
     
     override func currentLocationButtonTapped() {
@@ -52,9 +62,28 @@ class MapKitViewController: BaseMapViewController {
             span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         ), animated: true)
     }
+    
+    private func showPOIs(_ pois: [POI]) {
+        mapView.showAnnotations(pois.map(POIAnnotation.init), animated: true)
+    }
 }
 
 extension MapKitViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        switch annotation {
+        case let poiAnnotation as POIAnnotation:
+            let view = mapView.dequeueReusableAnnotationView(withIdentifier: poiReuseIdentifier, for: annotation) as! MKMarkerAnnotationView
+            
+            view.glyphText = poiAnnotation.glyph
+            view.markerTintColor = .systemTeal
+            view.displayPriority = .required
+            
+            return view
+        default:
+            return nil
+        }
+    }
+    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         switch overlay {
         case is TileOverlay: return MKTileOverlayRenderer(overlay: overlay)

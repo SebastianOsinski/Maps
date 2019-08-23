@@ -11,6 +11,10 @@
 		91213909231062490007D7CB /* BaseMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91213908231062490007D7CB /* BaseMapViewController.swift */; };
 		9121390B23106D740007D7CB /* gm_dark_style.json in Resources */ = {isa = PBXBuildFile; fileRef = 9121390A23106D740007D7CB /* gm_dark_style.json */; };
 		9121390D23106F490007D7CB /* DarkModeGMSMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9121390C23106F490007D7CB /* DarkModeGMSMapView.swift */; };
+		912139102310734C0007D7CB /* POIs.json in Resources */ = {isa = PBXBuildFile; fileRef = 9121390F2310734C0007D7CB /* POIs.json */; };
+		91213913231074C10007D7CB /* POI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91213912231074C10007D7CB /* POI.swift */; };
+		91213916231075040007D7CB /* POIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91213915231075040007D7CB /* POIProvider.swift */; };
+		91213918231077A10007D7CB /* POIAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91213917231077A10007D7CB /* POIAnnotation.swift */; };
 		9136634A230EFCB6002672B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91366349230EFCB6002672B9 /* AppDelegate.swift */; };
 		9136634C230EFCB6002672B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9136634B230EFCB6002672B9 /* SceneDelegate.swift */; };
 		9136634E230EFCB6002672B9 /* MapKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9136634D230EFCB6002672B9 /* MapKitViewController.swift */; };
@@ -44,6 +48,10 @@
 		91213908231062490007D7CB /* BaseMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMapViewController.swift; sourceTree = "<group>"; };
 		9121390A23106D740007D7CB /* gm_dark_style.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = gm_dark_style.json; sourceTree = "<group>"; };
 		9121390C23106F490007D7CB /* DarkModeGMSMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeGMSMapView.swift; sourceTree = "<group>"; };
+		9121390F2310734C0007D7CB /* POIs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = POIs.json; sourceTree = "<group>"; };
+		91213912231074C10007D7CB /* POI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POI.swift; sourceTree = "<group>"; };
+		91213915231075040007D7CB /* POIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIProvider.swift; sourceTree = "<group>"; };
+		91213917231077A10007D7CB /* POIAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIAnnotation.swift; sourceTree = "<group>"; };
 		91366346230EFCB6002672B9 /* Maps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91366349230EFCB6002672B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9136634B230EFCB6002672B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +105,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9121390E23106FE90007D7CB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				91366354230EFCB9002672B9 /* Assets.xcassets */,
+				9121390A23106D740007D7CB /* gm_dark_style.json */,
+				9121390F2310734C0007D7CB /* POIs.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		91213911231074B40007D7CB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				91213912231074C10007D7CB /* POI.swift */,
+				91213915231075040007D7CB /* POIProvider.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		9136633D230EFCB6002672B9 = {
 			isa = PBXGroup;
 			children = (
@@ -120,13 +147,14 @@
 		91366348230EFCB6002672B9 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
+				91213911231074B40007D7CB /* Model */,
 				9136637B230F33B6002672B9 /* GoogleMaps */,
 				9136637A230F33AE002672B9 /* MapKit */,
 				91366377230F19D9002672B9 /* Extensions */,
 				9136636E230F1066002672B9 /* Tiles */,
 				9136636D230F0E79002672B9 /* Main */,
+				9121390E23106FE90007D7CB /* Resources */,
 				91366351230EFCB6002672B9 /* Main.storyboard */,
-				91366354230EFCB9002672B9 /* Assets.xcassets */,
 				91366356230EFCB9002672B9 /* LaunchScreen.storyboard */,
 				91366359230EFCB9002672B9 /* Info.plist */,
 			);
@@ -175,6 +203,7 @@
 			children = (
 				9136634D230EFCB6002672B9 /* MapKitViewController.swift */,
 				91366371230F1226002672B9 /* TileOverlay.swift */,
+				91213917231077A10007D7CB /* POIAnnotation.swift */,
 			);
 			path = MapKit;
 			sourceTree = "<group>";
@@ -185,7 +214,6 @@
 				9136634F230EFCB6002672B9 /* GoogleMapsViewController.swift */,
 				9136637C230F3411002672B9 /* TileLayer.swift */,
 				9121390C23106F490007D7CB /* DarkModeGMSMapView.swift */,
-				9121390A23106D740007D7CB /* gm_dark_style.json */,
 			);
 			path = GoogleMaps;
 			sourceTree = "<group>";
@@ -289,6 +317,7 @@
 				91366358230EFCB9002672B9 /* LaunchScreen.storyboard in Resources */,
 				91366355230EFCB9002672B9 /* Assets.xcassets in Resources */,
 				91366353230EFCB6002672B9 /* Main.storyboard in Resources */,
+				912139102310734C0007D7CB /* POIs.json in Resources */,
 				9121390B23106D740007D7CB /* gm_dark_style.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,16 +418,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				91366379230F19E8002672B9 /* Result.swift in Sources */,
+				91213916231075040007D7CB /* POIProvider.swift in Sources */,
 				91366350230EFCB6002672B9 /* GoogleMapsViewController.swift in Sources */,
 				9136634E230EFCB6002672B9 /* MapKitViewController.swift in Sources */,
 				91366370230F107B002672B9 /* TileManager.swift in Sources */,
 				91213909231062490007D7CB /* BaseMapViewController.swift in Sources */,
 				9136634A230EFCB6002672B9 /* AppDelegate.swift in Sources */,
 				91366376230F12FA002672B9 /* TilePath.swift in Sources */,
+				91213918231077A10007D7CB /* POIAnnotation.swift in Sources */,
 				91366374230F12F2002672B9 /* TileCache.swift in Sources */,
 				91366372230F1226002672B9 /* TileOverlay.swift in Sources */,
 				9136634C230EFCB6002672B9 /* SceneDelegate.swift in Sources */,
 				9121390D23106F490007D7CB /* DarkModeGMSMapView.swift in Sources */,
+				91213913231074C10007D7CB /* POI.swift in Sources */,
 				9136637D230F3411002672B9 /* TileLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
