@@ -11,6 +11,7 @@ import MapKit
 
 class MapKitViewController: BaseMapViewController {
     private let poiReuseIdentifier = "poi"
+    private let poiClusteringIdentifier = "poiCluster"
     
     private let mapView = MKMapView()
     
@@ -72,6 +73,7 @@ extension MapKitViewController: MKMapViewDelegate {
             view.glyphText = poiAnnotation.glyph
             view.markerTintColor = .systemTeal
             view.displayPriority = .required
+            view.clusteringIdentifier = poiClusteringIdentifier
             
             return view
         default:
