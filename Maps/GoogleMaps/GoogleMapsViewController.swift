@@ -59,7 +59,7 @@ class GoogleMapsViewController: BaseMapViewController {
             let marker = GMSMarker(position: position)
             
             marker.title = poi.name
-            marker.
+            marker.icon = .emoji(poi.emoji)
             
             marker.map = mapView
         }

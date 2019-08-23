@@ -15,6 +15,7 @@
 		91213913231074C10007D7CB /* POI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91213912231074C10007D7CB /* POI.swift */; };
 		91213916231075040007D7CB /* POIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91213915231075040007D7CB /* POIProvider.swift */; };
 		91213918231077A10007D7CB /* POIAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91213917231077A10007D7CB /* POIAnnotation.swift */; };
+		9121391A231086FC0007D7CB /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91213919231086FC0007D7CB /* UIImage.swift */; };
 		9136634A230EFCB6002672B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91366349230EFCB6002672B9 /* AppDelegate.swift */; };
 		9136634C230EFCB6002672B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9136634B230EFCB6002672B9 /* SceneDelegate.swift */; };
 		9136634E230EFCB6002672B9 /* MapKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9136634D230EFCB6002672B9 /* MapKitViewController.swift */; };
@@ -52,6 +53,7 @@
 		91213912231074C10007D7CB /* POI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POI.swift; sourceTree = "<group>"; };
 		91213915231075040007D7CB /* POIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIProvider.swift; sourceTree = "<group>"; };
 		91213917231077A10007D7CB /* POIAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIAnnotation.swift; sourceTree = "<group>"; };
+		91213919231086FC0007D7CB /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		91366346230EFCB6002672B9 /* Maps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91366349230EFCB6002672B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9136634B230EFCB6002672B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				91366378230F19E8002672B9 /* Result.swift */,
+				91213919231086FC0007D7CB /* UIImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				9136634A230EFCB6002672B9 /* AppDelegate.swift in Sources */,
 				91366376230F12FA002672B9 /* TilePath.swift in Sources */,
 				91213918231077A10007D7CB /* POIAnnotation.swift in Sources */,
+				9121391A231086FC0007D7CB /* UIImage.swift in Sources */,
 				91366374230F12F2002672B9 /* TileCache.swift in Sources */,
 				91366372230F1226002672B9 /* TileOverlay.swift in Sources */,
 				9136634C230EFCB6002672B9 /* SceneDelegate.swift in Sources */,
