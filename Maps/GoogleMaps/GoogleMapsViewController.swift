@@ -10,7 +10,7 @@ import UIKit
 import GoogleMaps
 
 class GoogleMapsViewController: BaseMapViewController {
-    private let mapView = GMSMapView()
+    private let mapView = DarkModeGMSMapView()
     private let tileLayer = TileLayer()
     
     override func viewDidLoad() {
@@ -55,4 +55,3 @@ class GoogleMapsViewController: BaseMapViewController {
 extension GoogleMapsViewController: GMSMapViewDelegate {
     
 }
-
