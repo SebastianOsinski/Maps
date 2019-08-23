@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4C6C128A0254D09638CB402E /* Pods_MapsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0ED8F6210916C0D1979B259 /* Pods_MapsTests.framework */; };
+		91213909231062490007D7CB /* BaseMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91213908231062490007D7CB /* BaseMapViewController.swift */; };
 		9136634A230EFCB6002672B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91366349230EFCB6002672B9 /* AppDelegate.swift */; };
 		9136634C230EFCB6002672B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9136634B230EFCB6002672B9 /* SceneDelegate.swift */; };
 		9136634E230EFCB6002672B9 /* MapKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9136634D230EFCB6002672B9 /* MapKitViewController.swift */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		52A4DFDA71ADFB917CAA73DC /* Pods-MapsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapsTests.release.xcconfig"; path = "Target Support Files/Pods-MapsTests/Pods-MapsTests.release.xcconfig"; sourceTree = "<group>"; };
 		7388BE95BEB6FEDE870D9F8E /* Pods_Maps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Maps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		91213908231062490007D7CB /* BaseMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMapViewController.swift; sourceTree = "<group>"; };
 		91366346230EFCB6002672B9 /* Maps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91366349230EFCB6002672B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9136634B230EFCB6002672B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			children = (
 				91366349230EFCB6002672B9 /* AppDelegate.swift */,
 				9136634B230EFCB6002672B9 /* SceneDelegate.swift */,
+				91213908231062490007D7CB /* BaseMapViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				91366350230EFCB6002672B9 /* GoogleMapsViewController.swift in Sources */,
 				9136634E230EFCB6002672B9 /* MapKitViewController.swift in Sources */,
 				91366370230F107B002672B9 /* TileManager.swift in Sources */,
+				91213909231062490007D7CB /* BaseMapViewController.swift in Sources */,
 				9136634A230EFCB6002672B9 /* AppDelegate.swift in Sources */,
 				91366376230F12FA002672B9 /* TilePath.swift in Sources */,
 				91366374230F12F2002672B9 /* TileCache.swift in Sources */,

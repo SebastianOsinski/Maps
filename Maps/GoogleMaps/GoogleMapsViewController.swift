@@ -9,11 +9,12 @@
 import UIKit
 import GoogleMaps
 
-class GoogleMapsViewController: UIViewController {
-    @IBOutlet weak var mapView: GMSMapView!
+class GoogleMapsViewController: BaseMapViewController<GMSMapView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setMapModeButton(mode: .custom)
         
         mapView.delegate = self
         mapView.isMyLocationEnabled = true

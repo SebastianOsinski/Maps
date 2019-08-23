@@ -9,15 +9,15 @@
 import UIKit
 import MapKit
 
-class MapKitViewController: UIViewController {
-    @IBOutlet weak var mapView: MKMapView!
-    
+class MapKitViewController: BaseMapViewController<MKMapView> {
     private let locationManager = CLLocationManager()
     
     private var tileOverlay: TileOverlay?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setMapModeButton(mode: .original)
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -26,7 +26,7 @@ class MapKitViewController: UIViewController {
         mapView.delegate = self
     }
     
-    @IBAction func myLocationButtonTapped(_ sender: Any) {
+    override func currentLocationButtonTapped() {
         guard let location = mapView.userLocation.location else {
             return requestLocationIfPossible()
         }
@@ -34,19 +34,18 @@ class MapKitViewController: UIViewController {
         setLocationOnMap(location)
     }
     
-    @IBAction func switchMapMode(_ button: UIBarButtonItem) {
+    override func switchMapModeButtonTapped() {
         if let tileOverlay = tileOverlay {
             mapView.removeOverlay(tileOverlay)
             self.tileOverlay = nil
-            button.image = UIImage(systemName: "map")
+            setMapModeButton(mode: .original)
         } else {
             tileOverlay = TileOverlay()
             tileOverlay!.canReplaceMapContent = true
             mapView.addOverlay(tileOverlay!)
-            button.image = UIImage(systemName: "map.fill")
+            setMapModeButton(mode: .custom)
         }
     }
-    
     
     private func requestLocationIfPossible() {
         guard [CLAuthorizationStatus.authorizedAlways, .authorizedWhenInUse].contains(CLLocationManager.authorizationStatus()) else { return }

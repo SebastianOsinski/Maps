@@ -14,37 +14,10 @@
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="w9x-HS-c5G">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
-                            </mapView>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="w9x-HS-c5G" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="-88" id="DAL-d5-WiY"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="w9x-HS-c5G" secondAttribute="bottom" id="Smy-UO-ogj"/>
-                            <constraint firstItem="w9x-HS-c5G" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="f4h-tY-2Fl"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="w9x-HS-c5G" secondAttribute="trailing" id="q0Y-o9-8fs"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <navigationItem key="navigationItem" title="MapKit" id="QHY-xX-IFH">
-                        <rightBarButtonItems>
-                            <barButtonItem title="My Location" image="mappin.and.ellipse" catalog="system" id="q9h-mG-5lQ">
-                                <connections>
-                                    <action selector="myLocationButtonTapped:" destination="9pv-A4-QxB" id="WKN-as-HBg"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Switch mode" image="map" catalog="system" id="9hV-e9-hPR">
-                                <connections>
-                                    <action selector="switchMapMode:" destination="9pv-A4-QxB" id="DW6-6n-fag"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="mapView" destination="w9x-HS-c5G" id="KNj-rs-7yY"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="MapKit" id="QHY-xX-IFH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -57,27 +30,10 @@
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XK8-8N-g3H" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="XK8-8N-g3H" secondAttribute="trailing" id="C80-yG-lD6"/>
-                            <constraint firstItem="XK8-8N-g3H" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="WTO-nH-V4I"/>
-                            <constraint firstItem="XK8-8N-g3H" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" id="uIO-GA-iMg"/>
-                            <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="XK8-8N-g3H" secondAttribute="bottom" id="v82-Uz-4DV"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="GoogleMaps" id="42h-hy-GID">
-                        <barButtonItem key="rightBarButtonItem" title="My Location" image="mappin.and.ellipse" catalog="system" id="wg5-dF-jgq"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="mapView" destination="XK8-8N-g3H" id="sr8-gs-DDd"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="GoogleMaps" id="42h-hy-GID"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -143,6 +99,5 @@
     <resources>
         <image name="map" catalog="system" width="64" height="58"/>
         <image name="map.fill" catalog="system" width="64" height="54"/>
-        <image name="mappin.and.ellipse" catalog="system" width="62" height="64"/>
     </resources>
 </document>
