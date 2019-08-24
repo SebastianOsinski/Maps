@@ -15,7 +15,7 @@ class TileOverlay: MKTileOverlay {
         super.init(urlTemplate: nil)
         
         minimumZ = 1
-        maximumZ = 19
+//        maximumZ = 19
     }
     
     override func loadTile(at path: MKTileOverlayPath, result: @escaping (Data?, Error?) -> Void) {

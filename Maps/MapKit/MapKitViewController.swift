@@ -17,12 +17,21 @@ class MapKitViewController: BaseMapViewController {
     
     private var tileOverlay: TileOverlay?
     
+    private var selectedPOIAnnotation: POIAnnotation? {
+        didSet {
+            setLeftBarButtons(enabled: selectedPOIAnnotation != nil)
+        }
+    }
+    
+    private var currentRouteOverlays: [MKOverlay]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupMapView(mapView)
         
         setMapModeButton(mode: .original)
+        setLeftBarButtons(enabled: false)
         
         mapView.showsUserLocation = true
         mapView.delegate = self
@@ -52,6 +61,28 @@ class MapKitViewController: BaseMapViewController {
         }
     }
     
+    override func navigateButtonTapped() {
+        guard let selectedPOIAnnotation = selectedPOIAnnotation else { return }
+        
+        let request = MKDirections.Request()
+        request.source = .forCurrentLocation()
+        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: selectedPOIAnnotation.coordinate))
+        
+        let directions = MKDirections(request: request)
+        
+        directions.calculate { [weak self] (response, error) in
+            guard error == nil else {
+                return log.error(error!)
+            }
+            
+            guard let response = response else {
+                return log.info("No route for given request")
+            }
+            
+            self?.showRoutes(response.routes)
+        }
+    }
+    
     override func setLocationOnMap(_ location: CLLocation) {
         mapView.setRegion(MKCoordinateRegion(
             center: location.coordinate,
@@ -61,6 +92,13 @@ class MapKitViewController: BaseMapViewController {
     
     override func showPOIs(_ pois: [POI]) {
         mapView.showAnnotations(pois.map(POIAnnotation.init), animated: true)
+    }
+    
+    private func showRoutes(_ routes: [MKRoute]) {
+        let polylines = routes.map { $0.polyline }
+        
+        mapView.addOverlays(polylines)
+        currentRouteOverlays = polylines
     }
 }
 
@@ -83,8 +121,24 @@ extension MapKitViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         switch overlay {
-        case is TileOverlay: return MKTileOverlayRenderer(overlay: overlay)
+        case is TileOverlay:
+            return MKTileOverlayRenderer(overlay: overlay)
+        case is MKPolyline:
+            let renderer = MKPolylineRenderer(overlay: overlay)
+            renderer.strokeColor = .systemGreen
+            return renderer
         default: fatalError()
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        selectedPOIAnnotation = view.annotation as? POIAnnotation
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        selectedPOIAnnotation = nil
+        if let overlays = currentRouteOverlays {
+            mapView.removeOverlays(overlays)
         }
     }
 }
