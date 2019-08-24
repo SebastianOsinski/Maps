@@ -13,6 +13,8 @@ class GoogleMapsViewController: BaseMapViewController {
     private let mapView = DarkModeGMSMapView()
     private let tileLayer = TileLayer()
     
+    private var clusterManager: GMUClusterManager!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,6 +24,16 @@ class GoogleMapsViewController: BaseMapViewController {
         
         mapView.delegate = self
         mapView.isMyLocationEnabled = true
+        
+        let iconGenerator = GMUDefaultClusterIconGenerator()
+        let renderer = GMUDefaultClusterRenderer(mapView: mapView, clusterIconGenerator: iconGenerator)
+        renderer.delegate = self
+        
+        clusterManager = GMUClusterManager(
+            map: mapView,
+            algorithm: GMUNonHierarchicalDistanceBasedAlgorithm(),
+            renderer: renderer
+        )
         
         loadPOIs()
     }
@@ -54,18 +66,21 @@ class GoogleMapsViewController: BaseMapViewController {
     }
     
     override func showPOIs(_ pois: [POI]) {
-        pois.forEach { poi in
-            let position = CLLocationCoordinate2D(latitude: poi.lat, longitude: poi.long)
-            let marker = GMSMarker(position: position)
-            
-            marker.title = poi.name
-            marker.icon = .emoji(poi.emoji)
-            
-            marker.map = mapView
-        }
+        clusterManager.add(pois.map(POIItem.init))
+        clusterManager.cluster()
     }
 }
 
-extension GoogleMapsViewController: GMSMapViewDelegate {
-    
+extension GoogleMapsViewController: GMSMapViewDelegate {}
+
+extension GoogleMapsViewController: GMUClusterRendererDelegate {
+    // Looks like this method is only customization point where we can set our own images and titles for item markers as we do not create markers ourselves anymore.
+    func renderer(_ renderer: GMUClusterRenderer, willRenderMarker marker: GMSMarker) {
+        // Check if marker is item marker, not cluster item.
+        // Cluster items have userData of type GMUCluster
+        guard let poiItem = marker.userData as? POIItem else { return }
+        
+        marker.icon = poiItem.image
+        marker.title = poiItem.title
+    }
 }

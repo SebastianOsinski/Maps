@@ -26,6 +26,7 @@
 		91213A742311B6B50007D7CB /* GMUClusterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 912139CF2311B6B50007D7CB /* GMUClusterManager.m */; };
 		91213A752311B6B50007D7CB /* GQTPointQuadTreeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 912139D62311B6B50007D7CB /* GQTPointQuadTreeChild.m */; };
 		91213A762311B6B50007D7CB /* GQTPointQuadTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 912139D72311B6B50007D7CB /* GQTPointQuadTree.m */; };
+		91213A872311C15D0007D7CB /* POIItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91213A862311C15D0007D7CB /* POIItem.swift */; };
 		9136634A230EFCB6002672B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91366349230EFCB6002672B9 /* AppDelegate.swift */; };
 		9136634C230EFCB6002672B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9136634B230EFCB6002672B9 /* SceneDelegate.swift */; };
 		9136634E230EFCB6002672B9 /* MapKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9136634D230EFCB6002672B9 /* MapKitViewController.swift */; };
@@ -97,6 +98,7 @@
 		912139D72311B6B50007D7CB /* GQTPointQuadTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GQTPointQuadTree.m; sourceTree = "<group>"; };
 		912139D82311B6B50007D7CB /* GQTBounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GQTBounds.h; sourceTree = "<group>"; };
 		91213A852311B7150007D7CB /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
+		91213A862311C15D0007D7CB /* POIItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIItem.swift; sourceTree = "<group>"; };
 		91366346230EFCB6002672B9 /* Maps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91366349230EFCB6002672B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9136634B230EFCB6002672B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 				9136634F230EFCB6002672B9 /* GoogleMapsViewController.swift */,
 				9136637C230F3411002672B9 /* TileLayer.swift */,
 				9121390C23106F490007D7CB /* DarkModeGMSMapView.swift */,
+				91213A862311C15D0007D7CB /* POIItem.swift */,
 			);
 			path = GoogleMaps;
 			sourceTree = "<group>";
@@ -558,6 +561,7 @@
 				91213A762311B6B50007D7CB /* GQTPointQuadTree.m in Sources */,
 				91213A6E2311B6B50007D7CB /* GMUWrappingDictionaryKey.m in Sources */,
 				9121391A231086FC0007D7CB /* UIImage.swift in Sources */,
+				91213A872311C15D0007D7CB /* POIItem.swift in Sources */,
 				91366374230F12F2002672B9 /* TileCache.swift in Sources */,
 				91213A702311B6B50007D7CB /* GMUGridBasedClusterAlgorithm.m in Sources */,
 				91213A732311B6B50007D7CB /* GMUDefaultClusterRenderer.m in Sources */,
