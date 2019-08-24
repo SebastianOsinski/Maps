@@ -47,6 +47,7 @@ final class TileCache {
     
     func loadTile(at path: TilePath, completion: @escaping (Data?) -> ()) {
         if let memCached = memoryCache.object(forKey: TilePathCacheKey(path)) {
+            log.info("Memcached tile for \(path)")
             return completion(memCached as Data)
         }
         
@@ -54,11 +55,11 @@ final class TileCache {
         
         workerQueue.async { [fileManager, memoryCache] in
             guard fileManager.fileExists(atPath: url.path) else {
-                print("No cached tile for \(path)")
+                log.info("No cached tile for \(path)")
                 return completion(nil)
             }
             
-            print("Cached tile for \(path)")
+            log.info("Cached tile for \(path)")
             
             guard let data = try? Data(contentsOf: url) else {
                 return completion(nil)

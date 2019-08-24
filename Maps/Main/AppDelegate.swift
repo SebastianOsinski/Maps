@@ -9,11 +9,16 @@
 import UIKit
 import GoogleMaps
 import Keys
+import SwiftyBeaver
+
+let log = SwiftyBeaver.self
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        log.addDestination(ConsoleDestination())
+        
         GMSServices.provideAPIKey(MapsKeys().googleMapsApiKey)
         
         return true

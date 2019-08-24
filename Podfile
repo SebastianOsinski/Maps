@@ -14,6 +14,7 @@ target 'Maps' do
 
   # Pods for Maps
   pod 'GoogleMaps'
+  pod 'SwiftyBeaver'
 
   target 'MapsTests' do
     inherit! :search_paths

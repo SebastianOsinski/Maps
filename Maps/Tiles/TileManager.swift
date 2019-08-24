@@ -43,15 +43,16 @@ final class TileManager {
     }
     
     private func fetchTile(at path: TilePath, completion: @escaping (Result<Data, Error>) -> ()) {
-        print("Downloading tile at \(path)")
+        log.info("Downloading tile at \(path)...")
+        
         urlSession
             .dataTask(with: url(for: path)) { (data, response, error) in
                 // Improve response handling, data might not be image data
                 if let error = error {
-                    print("Errow downloading tile at \(path): \(error.localizedDescription)")
+                    log.error("Errow downloading tile at \(path): \(error.localizedDescription)")
                     completion(.failure(error))
                 } else if let data = data {
-                    print("Tile downloaded at \(path)")
+                    log.info("Tile downloaded at \(path)")
                     completion(.success(data))
                 } else {
                     fatalError()
