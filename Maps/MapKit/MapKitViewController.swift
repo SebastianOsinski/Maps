@@ -23,7 +23,26 @@ class MapKitViewController: BaseMapViewController {
         }
     }
     
-    private var currentRouteOverlays: [MKOverlay]?
+    private var currentRouteOverlays: [MKOverlay]? {
+        didSet {
+            if let oldOverlays = oldValue {
+                mapView.removeOverlays(oldOverlays)
+            }
+            if let newOverlays = currentRouteOverlays {
+                mapView.addOverlays(newOverlays)
+            }
+        }
+    }
+    private var selectedPOIShape: MKOverlay? {
+        didSet {
+            if let oldShape = oldValue {
+                mapView.removeOverlay(oldShape)
+            }
+            if let newShape = selectedPOIShape {
+                mapView.addOverlay(newShape)
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +102,18 @@ class MapKitViewController: BaseMapViewController {
         }
     }
     
+    override func toggleShapeButtonTapped() {
+        guard selectedPOIShape == nil else {
+            selectedPOIShape = nil
+            
+            return
+        }
+        
+        guard let selectedPOIAnnotation = selectedPOIAnnotation else { return }
+        
+        selectedPOIShape = MKCircle(center: selectedPOIAnnotation.coordinate, radius: 500.0)
+    }
+    
     override func setLocationOnMap(_ location: CLLocation) {
         mapView.setRegion(MKCoordinateRegion(
             center: location.coordinate,
@@ -95,10 +126,7 @@ class MapKitViewController: BaseMapViewController {
     }
     
     private func showRoutes(_ routes: [MKRoute]) {
-        let polylines = routes.map { $0.polyline }
-        
-        mapView.addOverlays(polylines)
-        currentRouteOverlays = polylines
+        currentRouteOverlays = routes.map { $0.polyline }
     }
 }
 
@@ -127,6 +155,11 @@ extension MapKitViewController: MKMapViewDelegate {
             let renderer = MKPolylineRenderer(overlay: overlay)
             renderer.strokeColor = .systemGreen
             return renderer
+        case is MKCircle:
+            let renderer = MKCircleRenderer(overlay: overlay)
+            renderer.strokeColor = .systemRed
+            renderer.lineWidth = 2
+            return renderer
         default: fatalError()
         }
     }
@@ -137,8 +170,7 @@ extension MapKitViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         selectedPOIAnnotation = nil
-        if let overlays = currentRouteOverlays {
-            mapView.removeOverlays(overlays)
-        }
+        currentRouteOverlays = nil
+        selectedPOIShape = nil
     }
 }
