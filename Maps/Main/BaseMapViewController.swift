@@ -25,20 +25,37 @@ class BaseMapViewController: UIViewController {
     let locationManager = CLLocationManager()
     
     private let poiProvider = POIProvider()
-    private let switchMapModeButtonItem = UIBarButtonItem()
+    private let switchMapModeButton = UIBarButtonItem()
+    private let navigateButton = UIBarButtonItem(image: UIImage(systemName: "arrow.turn.right.up"), style: .plain, target: nil, action: nil)
+    private let toggleShapeButton = UIBarButtonItem(image: UIImage(systemName: "skew"), style: .plain, target: nil, action: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        switchMapModeButtonItem.target = self
-        switchMapModeButtonItem.action = #selector(switchMapModeButtonTapped)
+        setupNavigationBar()
+        
+        locationManager.delegate = self
+    }
+    
+    private func setupNavigationBar() {
+        switchMapModeButton.target = self
+        switchMapModeButton.action = #selector(switchMapModeButtonTapped)
         
         navigationItem.rightBarButtonItems = [
             UIBarButtonItem(image: UIImage(systemName: "mappin.and.ellipse"), style: .plain, target: self, action: #selector(currentLocationButtonTapped)),
-            switchMapModeButtonItem
+            switchMapModeButton
         ]
         
-        locationManager.delegate = self
+        navigateButton.target = self
+        navigateButton.action = #selector(navigateButtonTapped)
+        
+        toggleShapeButton.target = self
+        toggleShapeButton.action = #selector(toggleShapeButtonTapped)
+        
+        navigationItem.leftBarButtonItems = [
+            navigateButton,
+            toggleShapeButton
+        ]
     }
     
     func setupMapView(_ mapView: UIView) {
@@ -48,7 +65,12 @@ class BaseMapViewController: UIViewController {
     }
     
     func setMapModeButton(mode: MapMode) {
-        switchMapModeButtonItem.image = mode.buttonImage
+        switchMapModeButton.image = mode.buttonImage
+    }
+    
+    func setLeftBarButtons(enabled: Bool) {
+        navigateButton.isEnabled = enabled
+        toggleShapeButton.isEnabled = enabled
     }
     
     func requestLocationIfPossible() {
@@ -76,6 +98,10 @@ class BaseMapViewController: UIViewController {
     @objc func currentLocationButtonTapped() {}
     
     @objc func switchMapModeButtonTapped() {}
+    
+    @objc func navigateButtonTapped() {}
+    
+    @objc func toggleShapeButtonTapped() {}
 }
 
 extension BaseMapViewController: CLLocationManagerDelegate {
